@@ -6,3 +6,5 @@ stop:
 	./vendor/bin/sail down
 root-shell:
 	./vendor/bin/sail root-shell
+test:
+	php artisan test
