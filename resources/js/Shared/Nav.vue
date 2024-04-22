@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
+import NavLink from "@/Components/NavLink.vue";
 
 const menuOpen = ref(false);
 const toggleMenu = () => menuOpen.value = !menuOpen.value;
@@ -26,6 +27,8 @@ const toggleMenu = () => menuOpen.value = !menuOpen.value;
           <li><a href="#" class="hover:text-rose-300">Dashboard</a></li>
           <li><a href="#" class="hover:text-rose-300">Courses</a></li>
           <li><a href="#" class="hover:text-rose-300">Forums</a></li>
+          <NavLink href="/login">Login</NavLink>
+          <NavLink href="/register">Register</NavLink>
         </ul>
       </nav>
     </div>
