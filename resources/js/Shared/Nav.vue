@@ -24,9 +24,9 @@ const toggleMenu = () => menuOpen.value = !menuOpen.value;
       <!-- Nav menu -->
       <nav :class="{'hidden': !menuOpen, 'block': menuOpen, 'lg:flex': menuOpen || !menuOpen}" class="w-full lg:w-auto lg:bg-transparent">
         <ul class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-4 p-4 lg:p-0">
-          <li><a href="#" class="hover:text-rose-300">Dashboard</a></li>
-          <li><a href="#" class="hover:text-rose-300">Courses</a></li>
-          <li><a href="#" class="hover:text-rose-300">Forums</a></li>
+          <NavLink :active="$page.url === '/'" href="#">Dashboard</NavLink>
+          <NavLink href="#">Courses</NavLink>
+          <NavLink href="#">Forums</NavLink>
           <NavLink href="/login">Login</NavLink>
           <NavLink href="/register">Register</NavLink>
         </ul>
