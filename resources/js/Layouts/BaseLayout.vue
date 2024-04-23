@@ -1,7 +1,7 @@
 <script setup lang="ts">
-
 import Header from "@/Shared/Header.vue";
 import Footer from "@/Shared/Footer.vue";
+
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\UserInterface\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Infrastructure\Laravel\Controller;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

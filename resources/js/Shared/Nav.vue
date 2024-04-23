@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
+import {Link} from "@inertiajs/vue3";
 import NavLink from "@/Components/NavLink.vue";
 
 const menuOpen = ref(false);
@@ -13,7 +14,7 @@ const toggleMenu = () => menuOpen.value = !menuOpen.value;
     <!-- Header  -->
     <div class="flex flex-col lg:flex-row justify-between items-center px-4 py-2 text-white">
       <div class="flex justify-between items-center w-full lg:w-auto">
-        <h1 class="text-xl font-bold">My LMS</h1>
+        <Link href="/" class="text-xl font-bold">My LMS</Link>
         <button class="lg:hidden" @click="toggleMenu">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                class="h-6 w-6">
@@ -27,8 +28,10 @@ const toggleMenu = () => menuOpen.value = !menuOpen.value;
           <NavLink :active="$page.url === '/'" href="#">Dashboard</NavLink>
           <NavLink href="#">Courses</NavLink>
           <NavLink href="#">Forums</NavLink>
-          <NavLink href="/login">Login</NavLink>
-          <NavLink href="/register">Register</NavLink>
+          <NavLink v-if="!$page.props.user" href="/login">Login</NavLink>
+          <NavLink v-if="!$page.props.user" href="/register">Register</NavLink>
+          <NavLink v-if="$page.props.user" method="post" href="/logout">Logout</NavLink>
+          <NavLink v-if="$page.props.user" href="">{{ $page.props.user?.name }}</NavLink>
         </ul>
       </nav>
     </div>
