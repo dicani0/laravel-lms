@@ -5,7 +5,7 @@ import { Link } from '@inertiajs/vue3';
 const props = defineProps<{
     href: string;
     active?: boolean;
-    method?: string;
+    method?: 'get' | 'post' | 'put' | 'patch' | 'delete' | undefined;
 }>();
 
 const classes = computed(() =>
