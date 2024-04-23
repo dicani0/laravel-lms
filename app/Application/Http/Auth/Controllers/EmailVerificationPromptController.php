@@ -2,11 +2,11 @@
 
 namespace App\Application\Http\Auth\Controllers;
 
+use App\Application\Http\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use Infrastructure\Laravel\Controller;
 
 class EmailVerificationPromptController extends Controller
 {

@@ -2,6 +2,7 @@
 
 namespace App\Application\Http\Auth\Controllers;
 
+use App\Application\Http\Controller;
 use Domains\User\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -12,7 +13,6 @@ use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
-use Infrastructure\Laravel\Controller;
 
 class RegisteredUserController extends Controller
 {

@@ -2,13 +2,13 @@
 
 namespace App\Application\Http\Auth\Controllers;
 
+use App\Application\Http\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
-use Infrastructure\Laravel\Controller;
 
 class PasswordResetLinkController extends Controller
 {

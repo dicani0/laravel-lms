@@ -2,9 +2,9 @@
 
 namespace App\Application\Http\Auth\Controllers;
 
+use App\Application\Http\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Infrastructure\Laravel\Controller;
 
 class EmailVerificationNotificationController extends Controller
 {

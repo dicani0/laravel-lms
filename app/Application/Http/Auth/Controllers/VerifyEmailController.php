@@ -2,10 +2,10 @@
 
 namespace App\Application\Http\Auth\Controllers;
 
+use App\Application\Http\Controller;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
-use Infrastructure\Laravel\Controller;
 
 class VerifyEmailController extends Controller
 {
