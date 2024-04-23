@@ -17,10 +17,10 @@ abstract class TestCase extends BaseTestCase
             return "Database\\Factories\\{$modelName}Factory";
         });
 
-        Factory::guessModelNamesUsing(function (Factory $factoryName) {
-            $modelName = str_replace('Factory', '', class_basename($factoryName));
-
-            return "Domains\\{$modelName}\\Models\\{$modelName}";
-        });
+//        Factory::guessModelNamesUsing(function (Factory $factoryName) {
+//            $modelName = str_replace('Factory', '', class_basename($factoryName));
+//
+//            return "Domains\\{$modelName}\\Models\\{$modelName}";
+//        });
     }
 }
