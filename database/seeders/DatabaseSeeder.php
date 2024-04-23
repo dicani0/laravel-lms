@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Infrastructure\Persistance\Models\User;
 use Illuminate\Database\Seeder;
+use Domains\User\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 

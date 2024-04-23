@@ -28,10 +28,10 @@ const toggleMenu = () => menuOpen.value = !menuOpen.value;
           <NavLink :active="$page.url === '/'" href="#">Dashboard</NavLink>
           <NavLink href="#">Courses</NavLink>
           <NavLink href="#">Forums</NavLink>
-          <NavLink v-if="!$page.props.user" href="/login">Login</NavLink>
-          <NavLink v-if="!$page.props.user" href="/register">Register</NavLink>
-          <NavLink v-if="$page.props.user" method="post" href="/logout">Logout</NavLink>
-          <NavLink v-if="$page.props.user" href="">{{ $page.props.user?.name }}</NavLink>
+          <NavLink v-if="!$page.props.auth.user" href="/login">Login</NavLink>
+          <NavLink v-if="!$page.props.auth.user" href="/register">Register</NavLink>
+          <NavLink v-if="$page.props.auth.user" method="post" href="/logout">Logout</NavLink>
+          <NavLink v-if="$page.props.auth.user" href="">{{ $page.props.auth.user?.name }}</NavLink>
         </ul>
       </nav>
     </div>
