@@ -7,7 +7,7 @@ import {useForm} from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
 const form = useForm({
-  title: '',
+  name: '',
   description: '',
   starts_at: '',
   ends_at: '',
@@ -29,9 +29,9 @@ const submit = () => {
       <h1>Create Course</h1>
     </div>
 
-    <form class="w-full" @submit.prevent="submit">
+    <form class="w-full md:min-w-[400px] lg:min-w-[600px]" @submit.prevent="submit">
       <InputLabel>Course Name</InputLabel>
-      <TextInput class="w-full" v-model="form.title"/>
+      <TextInput class="w-full" v-model="form.name"/>
 
       <InputLabel>Description</InputLabel>
       <TextArea class="w-full" v-model="form.description"></TextArea>
@@ -42,8 +42,9 @@ const submit = () => {
       <InputLabel>Ends at</InputLabel>
       <DateTime class="w-full" v-model="form.ends_at"></DateTime>
 
-      <div class="flex flex-col justify-end mt-4">
-        <PrimaryButton class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <div class="flex items-center justify-end mt-4">
+
+        <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
           Create Course
         </PrimaryButton>
       </div>

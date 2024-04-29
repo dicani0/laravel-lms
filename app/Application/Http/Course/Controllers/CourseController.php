@@ -17,7 +17,6 @@ class CourseController
 
     public function store(CreateCourseDto $dto): Response
     {
-        dd(1);
         return inertia('Course/CreateCourse');
     }
 }
