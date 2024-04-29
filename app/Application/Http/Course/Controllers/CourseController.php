@@ -2,51 +2,22 @@
 
 namespace App\Application\Http\Course\Controllers;
 
-use App\Application\Http\Course\Requests\CourseRequest;
-use App\Application\Http\Course\Resources\CourseResource;
+use Domains\Course\DTO\CreateCourseDto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Domains\Course\Models\Course;
+use Inertia\Response;
 
 class CourseController
 {
     use AuthorizesRequests;
 
-    public function index()
+    public function create(): Response
     {
-        $this->authorize('viewAny', Course::class);
-
-        return CourseResource::collection(Course::all());
+        return inertia('Course/CreateCourse');
     }
 
-    public function store(CourseRequest $request)
+    public function store(CreateCourseDto $dto): Response
     {
-        $this->authorize('create', Course::class);
-
-        return new CourseResource(Course::create($request->validated()));
-    }
-
-    public function show(Course $course)
-    {
-        $this->authorize('view', $course);
-
-        return new CourseResource($course);
-    }
-
-    public function update(CourseRequest $request, Course $course)
-    {
-        $this->authorize('update', $course);
-
-        $course->update($request->validated());
-
-        return new CourseResource($course);
-    }
-
-    public function destroy(Course $course)
-    {
-        $this->authorize('delete', $course);
-
-        $course->delete();
-
-        return response()->json();
+        dd(1);
+        return inertia('Course/CreateCourse');
     }
 }
