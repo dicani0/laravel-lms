@@ -2,6 +2,8 @@
 
 namespace App\Application\Http\Course\Controllers;
 
+use App\Application\Http\Course\Commands\CreateCourseCommand;
+use App\Application\Http\Course\Handlers\CreateCourseHandler;
 use Domains\Course\DTO\CreateCourseDto;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Inertia\Response;
@@ -15,8 +17,11 @@ class CourseController
         return inertia('Course/CreateCourse');
     }
 
-    public function store(CreateCourseDto $dto): Response
+    public function store(CreateCourseDto $dto, CreateCourseHandler $handler): Response
     {
-        return inertia('Course/CreateCourse');
+        $command = new CreateCourseCommand(data: $dto);
+        $handler->handle(command: $command);
+
+        return inertia(component: 'Course/CreateCourse');
     }
 }
