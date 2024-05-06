@@ -4,7 +4,7 @@ import Nav from "@/Shared/Nav.vue";
 </script>
 
 <template>
-  <div class="flex flex-col bg-gray-950">
+  <div id="header" class="flex flex-col bg-gray-950">
     <header class="bg-black p-4 text-red-600 border-b-2 border-red-900">
       <Nav></Nav>
     </header>
@@ -21,5 +21,8 @@ import Nav from "@/Shared/Nav.vue";
 
 
 <style scoped>
-
+#header {
+  position: sticky;
+  top: 0;
+}
 </style>

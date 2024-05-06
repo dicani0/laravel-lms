@@ -13,6 +13,11 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => $this->faker->domainName,
+            'description' => $this->faker->text,
+            'published_at' => now(),
+            'starts_at' => now()->addHours(2),
+            'ends_at' => now()->addHours(4),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

@@ -2,6 +2,8 @@
 
 namespace App\Application\Http\Providers;
 
+use Domains\Course\Repositories\CourseRepositoryContract;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            CourseRepositoryContract::class,
+        );
     }
 
     /**
@@ -19,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Factory::guessFactoryNamesUsing(function (string $modelName) {
+            $modelName = class_basename($modelName);
+
+            return "Database\\Factories\\{$modelName}Factory";
+        });
     }
 }
