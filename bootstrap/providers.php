@@ -1,5 +1,9 @@
 <?php
 
+use App\Application\Http\Providers\AppServiceProvider;
+use App\Course\Application\CourseServiceProvider;
+
 return [
-    \App\Application\Http\Providers\AppServiceProvider::class,
+    AppServiceProvider::class,
+    CourseServiceProvider::class,
 ];
