@@ -2,9 +2,12 @@
 
 namespace App\Course\Application\DTO;
 
+use DateTime;
 use Domains\User\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\LaravelData\Attributes\Computed;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
 class CreateCourseDto extends Data
@@ -15,9 +18,12 @@ class CreateCourseDto extends Data
     public function __construct(
         public string $name,
         public string|null $description,
-        public string $starts_at,
-        public string|null $ends_at,
-        public string|null $published_at,
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public DateTime $starts_at,
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public DateTime|null $ends_at,
+        #[WithCast(DateTimeInterfaceCast::class)]
+        public DateTime|null $published_at,
     ) {
         $this->author = Auth::user();
     }

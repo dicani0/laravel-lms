@@ -24,7 +24,6 @@ class CourseController
 
     public function store(CreateCourseDto $dto): Response
     {
-
         $command = new CreateCourseCommand(
             name: $dto->name,
             description: $dto->description,
