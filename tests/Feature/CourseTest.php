@@ -38,9 +38,9 @@ class CourseTest extends TestCase
             'name' => 'Course Test',
             'description' => 'Description Test',
             'author_id' => $user->id,
-            'starts_at' => now()->toString(),
-            'ends_at' => now()->addDays(10)->toString(),
-            'published_at' => now()->toString(),
+            'starts_at' => now()->format('Y-m-d H:i:s'),
+            'ends_at' => now()->addDays(10)->format('Y-m-d H:i:s'),
+            'published_at' => now()->format('Y-m-d H:i:s'),
         ]);
 
     }
