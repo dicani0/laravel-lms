@@ -19,6 +19,7 @@ class CourseController
 
     public function create(): Response
     {
+        $this->authorize('create_course');
         return inertia('Course/CreateCourse');
     }
 

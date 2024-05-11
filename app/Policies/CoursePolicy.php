@@ -22,7 +22,12 @@ class CoursePolicy
 
     public function create(User $user): bool
     {
-        return true;
+        return $user?->can('create_course') ?? false;
+    }
+
+    public function store(User $user): bool
+    {
+        return $user?->can('create_course') ?? false;
     }
 
     public function update(User $user, CourseModel $course): bool

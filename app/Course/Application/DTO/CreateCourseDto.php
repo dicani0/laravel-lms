@@ -27,4 +27,9 @@ class CreateCourseDto extends Data
     ) {
         $this->author = Auth::user();
     }
+
+    public static function authorize(): bool
+    {
+        return Auth::user()?->can('create_course') ?? false;
+    }
 }
