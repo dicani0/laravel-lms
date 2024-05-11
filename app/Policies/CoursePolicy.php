@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Domains\Course\Models\Course;
+use App\Course\Infrastructure\Persistence\Model\CourseModel;
 use Domains\User\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CoursePolicy
 {
@@ -15,32 +15,37 @@ class CoursePolicy
         return true;
     }
 
-    public function view(User $user, Course $course): bool
+    public function view(User $user, CourseModel $course): bool
     {
         return true;
     }
 
     public function create(User $user): bool
     {
-        return true;
+        return $user?->can('create_course') ?? false;
     }
 
-    public function update(User $user, Course $course): bool
+    public function store(User $user): bool
+    {
+        return $user?->can('create_course') ?? false;
+    }
+
+    public function update(User $user, CourseModel $course): bool
     {
         return true;
     }
 
-    public function delete(User $user, Course $course): bool
+    public function delete(User $user, CourseModel $course): bool
     {
         return true;
     }
 
-    public function restore(User $user, Course $course): bool
+    public function restore(User $user, CourseModel $course): bool
     {
         return true;
     }
 
-    public function forceDelete(User $user, Course $course): bool
+    public function forceDelete(User $user, CourseModel $course): bool
     {
         return true;
     }

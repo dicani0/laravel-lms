@@ -2,7 +2,6 @@
 
 use App\Application\Http\Course\Controllers\CourseController;
 use App\Application\Http\User\Controllers\ProfileController;
-use Domains\Course\Models\Course;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -13,7 +12,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
-        'courses' => Course::paginate(9),
+//        'courses' => CourseModel::paginate(9),
     ]);
 });
 
@@ -35,4 +34,4 @@ Route::prefix('courses')->group(function () {
         ->name('courses.store');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import TextInput from "@/Components/Forms/TextInput.vue";
 import InputLabel from "@/Components/Forms/InputLabel.vue";
 import TextArea from "@/Components/Forms/TextArea.vue";
@@ -7,11 +7,18 @@ import {useForm} from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputError from "@/Components/Forms/InputError.vue";
 
-const form = useForm({
+const form = useForm<{
+  name: string;
+  description: string;
+  starts_at: string;
+  ends_at: string;
+  published_at: string;
+}>({
   name: '',
   description: '',
   starts_at: '',
   ends_at: '',
+  published_at: '',
 });
 
 const submit = () => {
@@ -33,24 +40,28 @@ const submit = () => {
 
     <form class="w-full md:min-w-[400px] lg:min-w-[600px]" @submit.prevent="submit">
       <InputLabel>Course Name</InputLabel>
-      <TextInput class="w-full" v-model="form.name"/>
-      <InputError class="mt-2" :message="form.errors.name"/>
+      <TextInput v-model="form.name" class="w-full"/>
+      <InputError :message="form.errors.name" class="mt-2"/>
 
       <InputLabel>Description</InputLabel>
-      <TextArea :required="false" class="w-full" v-model="form.description"></TextArea>
-      <InputError class="mt-2" :message="form.errors.description"/>
+      <TextArea v-model="form.description" :required="false" class="w-full"></TextArea>
+      <InputError :message="form.errors.description" class="mt-2"/>
 
       <InputLabel>Starts at</InputLabel>
-      <DateTime class="w-full" v-model="form.starts_at"></DateTime>
-      <InputError class="mt-2" :message="form.errors.starts_at"/>
+      <DateTime v-model="form.starts_at" class="w-full"></DateTime>
+      <InputError :message="form.errors.starts_at" class="mt-2"/>
 
       <InputLabel>Ends at</InputLabel>
-      <DateTime :required="false" class="w-full" v-model="form.ends_at"></DateTime>
-      <InputError class="mt-2" :message="form.errors.ends_at"/>
+      <DateTime v-model="form.ends_at" :required="false" class="w-full"></DateTime>
+      <InputError :message="form.errors.ends_at" class="mt-2"/>
+
+      <InputLabel>Published at</InputLabel>
+      <DateTime v-model="form.published_at" class="w-full"></DateTime>
+      <InputError :message="form.errors.published_at" class="mt-2"/>
 
       <div class="flex items-center justify-end mt-4">
 
-        <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="ms-4">
           Create Course
         </PrimaryButton>
       </div>

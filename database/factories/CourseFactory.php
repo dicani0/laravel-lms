@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Course\Infrastructure\Persistence\Model\CourseModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
-use Domains\Course\Models\Course;
 
 class CourseFactory extends Factory
 {
-    protected $model = Course::class;
+    protected $model = CourseModel::class;
 
     public function definition(): array
     {
