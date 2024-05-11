@@ -4,14 +4,16 @@ namespace Tests\Feature;
 
 use Domains\User\Models\User;
 use Inertia\Testing\AssertableInertia;
+use JetBrains\PhpStorm\NoReturn;
 use Tests\TestCase;
 
 class CourseTest extends TestCase
 {
+    public User $admin;
 
     public function test_create_course_render(): void
     {
-        $response = $this->get('/courses/create');
+        $response = $this->actingAs($this->admin)->get('/courses/create');
 
         $response->assertInertia(function (AssertableInertia $page): void {
             $page->component('Course/CreateCourse');
@@ -22,9 +24,8 @@ class CourseTest extends TestCase
 
     public function test_create_course(): void
     {
-        $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->post('/courses/store', [
+        $response = $this->actingAs($this->admin)->post('/courses/store', [
             'name' => 'Course Test',
             'description' => 'Description Test',
             'starts_at' => now()->toIso8601String(),
@@ -37,11 +38,17 @@ class CourseTest extends TestCase
         $this->assertDatabaseHas('courses', [
             'name' => 'Course Test',
             'description' => 'Description Test',
-            'author_id' => $user->id,
+            'author_id' => $this->admin->id,
             'starts_at' => now()->format('Y-m-d H:i:s'),
             'ends_at' => now()->addDays(10)->format('Y-m-d H:i:s'),
             'published_at' => now()->format('Y-m-d H:i:s'),
         ]);
 
+    }
+
+    #[NoReturn] protected function setUp(): void
+    {
+        parent::setUp();
+        $this->admin = User::firstWhere('name', 'Admin');
     }
 }
